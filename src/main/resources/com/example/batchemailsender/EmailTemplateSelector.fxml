@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.batchemailsender.EmailTemplateController">
+   <children>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#showIcons" onMouseExited="#hideIcons" prefHeight="40.0" prefWidth="225.0">
+         <children>
+            <Label prefHeight="40.0" prefWidth="127.5" text="Customer Template">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+            <ImageView fx:id="duplicateIcon" fitHeight="20.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../images/duplicateicon.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="8.0" top="10.0" />
+               </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="editIcon" fitHeight="20.0" fitWidth="25.0" layoutX="148.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../images/editicon.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" top="10.0" />
+               </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="deleteIcon" fitHeight="20.0" fitWidth="25.0" layoutX="173.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../images/deleteicon.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" right="8.0" top="10.0" />
+               </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </HBox>
+      <Separator prefWidth="200.0" />
+   </children>
+</VBox>

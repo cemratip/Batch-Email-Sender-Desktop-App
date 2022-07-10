@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+
+<Label alignment="CENTER" onMouseClicked="#openNewEmailListWindow" prefHeight="40.0" prefWidth="225.0" text="+ Create new email list" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.batchemailsender.EmailListController">
+   <font>
+      <Font size="20.0" />
+   </font>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</Label>
