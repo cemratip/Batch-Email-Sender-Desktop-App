@@ -7,27 +7,24 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox fx:id="root" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.batchemailsender.EmailTemplateSelectorController">
+<VBox fx:id="root" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.batchemailsender.EmailAccountSelectorController">
    <children>
       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#showIcons" onMouseExited="#hideIcons" prefHeight="40.0" prefWidth="225.0">
          <children>
-            <Label fx:id="name" onMouseClicked="#select" prefHeight="40.0" prefWidth="127.5" text="Customer Template">
-               <font>
-                  <Font size="16.0" />
-               </font>
+            <Label fx:id="name" minWidth="-Infinity" onMouseClicked="#select" prefHeight="40.0" prefWidth="160.0" text="Account">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Label>
             <ImageView fx:id="deleteIcon" fitHeight="20.0" fitWidth="25.0" layoutX="173.0" layoutY="10.0" onMouseClicked="#delete" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../../images/deleteicon.png" />
                </image>
                <HBox.margin>
-                  <Insets left="68.0" right="8.0" top="10.0" />
+                  <Insets left="27.0" right="8.0" top="10.0" />
                </HBox.margin>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -37,4 +34,7 @@
       </HBox>
       <Separator prefWidth="200.0" />
    </children>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
 </VBox>

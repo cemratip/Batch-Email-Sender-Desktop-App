@@ -7,19 +7,22 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.batchemailsender.EmailListController">
+<VBox fx:id="root" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.batchemailsender.EmailListSelectorController">
    <children>
       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#showIcons" onMouseExited="#hideIcons" prefHeight="40.0" prefWidth="225.0">
          <children>
-            <Label prefHeight="40.0" prefWidth="127.5" text="Customer Emails">
+            <Label fx:id="name" onMouseClicked="#select" prefHeight="40.0" prefWidth="127.5" text="Customer Emails">
                <font>
                   <Font size="16.0" />
                </font>
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
-            <ImageView fx:id="duplicateIcon" fitHeight="20.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="duplicateIcon" fitHeight="20.0" fitWidth="25.0" onMouseClicked="#duplicate" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../../images/duplicateicon.png" />
                </image>
@@ -30,7 +33,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="editIcon" fitHeight="20.0" fitWidth="25.0" layoutX="148.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="editIcon" fitHeight="20.0" fitWidth="25.0" layoutX="148.0" layoutY="10.0" onMouseClicked="#edit" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../../images/editicon.png" />
                </image>
@@ -41,7 +44,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="deleteIcon" fitHeight="20.0" fitWidth="25.0" layoutX="173.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="deleteIcon" fitHeight="20.0" fitWidth="25.0" layoutX="173.0" layoutY="10.0" onMouseClicked="#delete" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../../images/deleteicon.png" />
                </image>

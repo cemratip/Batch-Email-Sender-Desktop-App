@@ -47,9 +47,7 @@ public class CreateNewEmailListWindow {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-
-                EmailListController.display();
+                MainController.replaceEmailLists();
             } else {
                 Alert a = new Alert(Alert.AlertType.ERROR, "Please fill the email list.");
                 a.show();

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+
+<Label alignment="CENTER" onMouseClicked="#openNewEmailAccountWindow" prefHeight="40.0" prefWidth="225.0" text="+ Pair new email account" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.batchemailsender.EmailAccountController">
+   <font>
+      <Font size="17.0" />
+   </font>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</Label>

@@ -17,23 +17,13 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class EmailListController {
-
-    @FXML
-    private ImageView duplicateIcon;
-    @FXML
-    private ImageView editIcon;
-    @FXML
-    private ImageView deleteIcon;
-
     private static Stage createNewEmailListStage;
 
     public static final ArrayList<String> emailListFiles = new ArrayList<>();
 
     public static BorderPane display() throws IOException {
-        BorderPane emailList = null;
-        VBox list = null;
-        emailList = FXMLLoader.load(Objects.requireNonNull(EmailListController.class.getResource("EmailLists.fxml")));
-        list = (VBox) emailList.getChildren().get(1);
+        BorderPane emailList = FXMLLoader.load(Objects.requireNonNull(EmailListController.class.getResource("EmailLists.fxml")));
+        VBox list = (VBox) emailList.getChildren().get(1);
 
         emailListFiles.clear();
         File[] files = new File("src/main/resources/local database").listFiles();
@@ -60,20 +50,9 @@ public class EmailListController {
         return emailList;
     }
 
-    public void showIcons() {
-        duplicateIcon.setVisible(true);
-        editIcon.setVisible(true);
-        deleteIcon.setVisible(true);
-    }
 
-    public void hideIcons() {
-        duplicateIcon.setVisible(false);
-        editIcon.setVisible(false);
-        deleteIcon.setVisible(false);
-    }
 
     public void openNewEmailListWindow() throws IOException {
-        // open new window
         createNewEmailListStage = new Stage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CreateNewEmailListWindow.fxml")));
         Scene scene = new Scene(root, 350, 400);

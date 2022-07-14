@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -21,7 +22,23 @@
     <center>
         <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="350.0" BorderPane.alignment="CENTER">
          <children>
-            <WebView prefHeight="200.0" prefWidth="200.0" />
+            <HBox alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#upload" text="Upload" />
+                  <Label fx:id="fileName" prefHeight="26.0" text="Choose file">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+            <WebView fx:id="displayer" prefHeight="225.0" prefWidth="350.0" visible="false">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin></WebView>
          </children></VBox>
     </center>
     <bottom>

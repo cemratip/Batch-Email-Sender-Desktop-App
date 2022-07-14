@@ -12,26 +12,20 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class EmailTemplateController {
 
-    @FXML
-    private ImageView duplicateIcon;
-    @FXML
-    private ImageView editIcon;
-    @FXML
-    private ImageView deleteIcon;
 
     private static Stage createNewEmailTemplateStage;
 
     public static BorderPane display() throws IOException {
-        BorderPane emailTemplateList = null;
-        VBox list = null;
-        emailTemplateList = FXMLLoader.load(Objects.requireNonNull(EmailListController.class.getResource("EmailTemplates.fxml")));
-        list = (VBox) emailTemplateList.getChildren().get(1);
+        BorderPane emailTemplateList = FXMLLoader.load(Objects.requireNonNull(EmailTemplateController.class.getResource("EmailTemplates.fxml")));
+        VBox list = (VBox) emailTemplateList.getChildren().get(1);
 
         ArrayList<String> emailTemplateFiles = new ArrayList<>();
         File[] files = new File("src/main/resources/local database").listFiles();
@@ -45,11 +39,22 @@ public class EmailTemplateController {
         }
 
         for (String emailTemplateFile : emailTemplateFiles) {
-            VBox selector = FXMLLoader.load(Objects.requireNonNull(EmailTemplateController.class.getResource("EmailTemplateSelector.fxml")));
-            HBox hbox = (HBox) selector.getChildren().get(0);
-            Label name = (Label) hbox.getChildren().get(0);
-            name.setText(emailTemplateFile);
-            list.getChildren().add(selector);
+            try {
+                File myObj = new File("src/main/resources/local database/"+emailTemplateFile+".html");
+                Scanner myReader = new Scanner(myObj);
+                while (myReader.hasNextLine()) {
+                    String data = myReader.nextLine();
+                    File file = new File(data);
+                    if (file.exists()) {
+                        VBox selector = FXMLLoader.load(Objects.requireNonNull(EmailTemplateController.class.getResource("EmailTemplateSelector.fxml")));
+                        HBox hbox = (HBox) selector.getChildren().get(0);
+                        Label name = (Label) hbox.getChildren().get(0);
+                        name.setText(emailTemplateFile);
+                        list.getChildren().add(selector);
+                    }
+                }
+                myReader.close();
+            } catch (FileNotFoundException e) {e.printStackTrace();}
         }
 
         Label createBtn = FXMLLoader.load(Objects.requireNonNull(EmailTemplateController.class.getResource("CreateNewEmailTemplateButton.fxml")));
@@ -58,20 +63,7 @@ public class EmailTemplateController {
         return emailTemplateList;
     }
 
-    public void showIcons() {
-        duplicateIcon.setVisible(true);
-        editIcon.setVisible(true);
-        deleteIcon.setVisible(true);
-    }
-
-    public void hideIcons() {
-        duplicateIcon.setVisible(false);
-        editIcon.setVisible(false);
-        deleteIcon.setVisible(false);
-    }
-
     public void openNewEmailTemplateWindow() throws IOException {
-        // open new window
         createNewEmailTemplateStage = new Stage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CreateNewEmailTemplateWindow.fxml")));
         Scene scene = new Scene(root, 350, 400);
