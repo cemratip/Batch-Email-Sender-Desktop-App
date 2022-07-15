@@ -9,7 +9,7 @@
 
 <VBox fx:id="root" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.batchemailsender.EmailListSelectorController">
    <children>
-      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#showIcons" onMouseExited="#hideIcons" prefHeight="40.0" prefWidth="225.0">
+      <HBox fx:id="unselected" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#showIcons" onMouseExited="#hideIcons" prefHeight="40.0" prefWidth="225.0">
          <children>
             <Label fx:id="name" onMouseClicked="#select" prefHeight="40.0" prefWidth="127.5" text="Customer Emails">
                <font>

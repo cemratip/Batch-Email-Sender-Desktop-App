@@ -22,6 +22,7 @@ public class EmailListController {
     public static final ArrayList<String> emailListFiles = new ArrayList<>();
 
     public static BorderPane display() throws IOException {
+        EmailListSelectorController.allEmailListSelectors.clear();
         BorderPane emailList = FXMLLoader.load(Objects.requireNonNull(EmailListController.class.getResource("EmailLists.fxml")));
         VBox list = (VBox) emailList.getChildren().get(1);
 
@@ -42,6 +43,7 @@ public class EmailListController {
             Label name = (Label) hbox.getChildren().get(0);
             name.setText(emailListFile);
             list.getChildren().add(selector);
+            EmailListSelectorController.allEmailListSelectors.add(selector);
         }
 
         Label createBtn = FXMLLoader.load(Objects.requireNonNull(EmailListController.class.getResource("CreateNewEmailListButton.fxml")));
@@ -54,7 +56,7 @@ public class EmailListController {
 
     public void openNewEmailListWindow() throws IOException {
         createNewEmailListStage = new Stage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CreateNewEmailListWindow.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(EmailListController.class.getResource("CreateNewEmailListWindow.fxml")));
         Scene scene = new Scene(root, 350, 400);
         createNewEmailListStage.setTitle("Create a new email list");
         createNewEmailListStage.setScene(scene);

@@ -91,6 +91,10 @@ public class MainController extends Application {
     }
 
     public void send () {
+        System.out.println(EmailListSelectorController.selectedEmailList);
+        System.out.println(EmailAccountSelectorController.selectedEmailAccountDetails);
+        System.out.println(EmailTemplateSelectorController.selectedEmailTemplatePath);
+
         if (!EmailListSelectorController.selectedEmailList.isEmpty() && !EmailAccountSelectorController.selectedEmailAccountDetails.isEmpty() && !EmailTemplateSelectorController.selectedEmailTemplatePath.equals("")) {
             sendEmails();
         }

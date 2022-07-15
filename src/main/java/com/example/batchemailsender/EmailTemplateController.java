@@ -19,11 +19,10 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class EmailTemplateController {
-
-
     private static Stage createNewEmailTemplateStage;
 
     public static BorderPane display() throws IOException {
+        EmailTemplateSelectorController.allEmailTemplateSelectors.clear();
         BorderPane emailTemplateList = FXMLLoader.load(Objects.requireNonNull(EmailTemplateController.class.getResource("EmailTemplates.fxml")));
         VBox list = (VBox) emailTemplateList.getChildren().get(1);
 
@@ -51,6 +50,7 @@ public class EmailTemplateController {
                         Label name = (Label) hbox.getChildren().get(0);
                         name.setText(emailTemplateFile);
                         list.getChildren().add(selector);
+                        EmailTemplateSelectorController.allEmailTemplateSelectors.add(selector);
                     }
                 }
                 myReader.close();

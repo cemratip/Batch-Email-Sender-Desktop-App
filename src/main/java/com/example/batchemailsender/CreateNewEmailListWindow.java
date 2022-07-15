@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import static com.example.batchemailsender.EmailListSelectorController.editing;
+
 public class CreateNewEmailListWindow {
 
     @FXML
@@ -31,7 +33,12 @@ public class CreateNewEmailListWindow {
                 nameInput.clear();
                 emailInput.clear();
                 emails.clear();
-                EmailListController.closeNewEmailListWindow();
+                if (!editing) {
+                    EmailListController.closeNewEmailListWindow();
+                } else {
+                    EmailListSelectorController.closeEditEmailListWindow();
+                    EmailListSelectorController.editing = false;
+                }
 
                 // create JSON file
                 JSONObject jsonObject = new JSONObject();

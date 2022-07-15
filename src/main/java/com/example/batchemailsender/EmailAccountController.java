@@ -19,12 +19,10 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class EmailAccountController {
-
-
-
     private static Stage createNewEmailAccountStage;
 
     public static BorderPane display() throws IOException {
+        EmailAccountSelectorController.allEmailAccountSelectors.clear();
         BorderPane emailAccountList = FXMLLoader.load(Objects.requireNonNull(EmailAccountController.class.getResource("EmailAccounts.fxml")));
         VBox list = (VBox) emailAccountList.getChildren().get(1);
 
@@ -45,6 +43,7 @@ public class EmailAccountController {
             Label name = (Label) hbox.getChildren().get(0);
             name.setText(emailAccount+"@gmail.com");
             list.getChildren().add(selector);
+            EmailAccountSelectorController.allEmailAccountSelectors.add(selector);
         }
 
         Label createBtn = FXMLLoader.load(Objects.requireNonNull(EmailAccountController.class.getResource("CreateNewEmailAccountButton.fxml")));
