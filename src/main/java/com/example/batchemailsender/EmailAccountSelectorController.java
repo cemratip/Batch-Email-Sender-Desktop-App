@@ -5,16 +5,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -30,7 +22,6 @@ public class EmailAccountSelectorController extends MainController {
     public static ArrayList<VBox> allEmailAccountSelectors = new ArrayList<>();
 
     public void select() {
-
         // if the current selector's tag is unselected
         HBox hbox = (HBox) root.getChildren().get(0);
         if (hbox.getId().equals("unselected")) {

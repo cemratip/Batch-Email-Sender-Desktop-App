@@ -9,7 +9,7 @@
    <top>
       <VBox alignment="CENTER" prefHeight="50.0" prefWidth="350.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="50.0" prefWidth="350.0" text="Add a Gmail account">
+            <Label alignment="CENTER" prefHeight="50.0" prefWidth="350.0" text="Pair a Gmail account">
                <font>
                   <Font size="25.0" />
                </font>
@@ -66,6 +66,14 @@
                   <Insets top="25.0" />
                </VBox.margin>
             </HBox>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Enter the App Password to your Gmail account." textAlignment="CENTER">
+               <font>
+                  <Font size="11.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="12.0" />
+               </VBox.margin>
+            </Label>
          </children></VBox>
    </center>
    <bottom>

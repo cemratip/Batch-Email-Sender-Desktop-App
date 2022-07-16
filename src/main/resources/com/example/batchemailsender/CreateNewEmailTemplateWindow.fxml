@@ -10,7 +10,7 @@
     <top>
         <VBox alignment="CENTER" prefHeight="50.0" prefWidth="350.0" BorderPane.alignment="CENTER">
             <children>
-                <Label alignment="CENTER" prefHeight="50.0" prefWidth="350.0" text="Create a new email template">
+                <Label alignment="CENTER" prefHeight="50.0" prefWidth="350.0" text="Add a new email template">
                     <font>
                         <Font size="25.0" />
                     </font>

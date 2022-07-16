@@ -18,9 +18,9 @@
       </VBox>
    </top>
    <center>
-      <VBox prefHeight="400.0" prefWidth="225.0" BorderPane.alignment="CENTER" />
+      <VBox prefHeight="400.0" prefWidth="225.0" />
    </center>
    <right>
-      <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
    </right>
 </BorderPane>

@@ -3,26 +3,19 @@ package com.example.batchemailsender;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Properties;
-
-import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 
 public class MainController extends Application {
@@ -91,10 +84,6 @@ public class MainController extends Application {
     }
 
     public void send () {
-        System.out.println(EmailListSelectorController.selectedEmailList);
-        System.out.println(EmailAccountSelectorController.selectedEmailAccountDetails);
-        System.out.println(EmailTemplateSelectorController.selectedEmailTemplatePath);
-
         if (!EmailListSelectorController.selectedEmailList.isEmpty() && !EmailAccountSelectorController.selectedEmailAccountDetails.isEmpty() && !EmailTemplateSelectorController.selectedEmailTemplatePath.equals("")) {
             sendEmails();
         }
@@ -108,7 +97,6 @@ public class MainController extends Application {
         String email = EmailAccountSelectorController.selectedEmailAccountDetails.get(0);
         StringBuilder sb = new StringBuilder(EmailAccountSelectorController.selectedEmailAccountDetails.get(1));
         String password = sb.reverse().toString();
-
 
         // Assuming you are sending email from through gmail's smtp
         String host = "smtp.gmail.com";
@@ -150,11 +138,14 @@ public class MainController extends Application {
                 Transport.send(message);
 
             } catch (MessagingException e) {
-                Alert a = new Alert(Alert.AlertType.WARNING, "Unable to send an email to "+recipient);
+                Alert a = new Alert(Alert.AlertType.ERROR, "An error occurred. Please try again.");
                 a.show();
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Error accessing file.");
+                a.show();
             }
         }
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Email batch sent.");
+        a.show();
     }
 }

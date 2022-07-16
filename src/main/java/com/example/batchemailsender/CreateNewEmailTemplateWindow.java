@@ -1,18 +1,14 @@
 package com.example.batchemailsender;
 
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import javafx.scene.web.WebView;
 
 public class CreateNewEmailTemplateWindow {
@@ -25,20 +21,25 @@ public class CreateNewEmailTemplateWindow {
     private String filePath;
 
     public void create() throws IOException {
-        if (filePath != null) {
-            try {
-                EmailTemplateController.closeNewEmailTemplateWindow();
-                FileWriter file = new FileWriter("src/main/resources/local database/" + fileName.getText());
-                file.write(filePath);
-                file.close();
-            } catch (IOException e) {
+        if (EmailTemplateSelectorController.allEmailTemplateSelectors.size() < 8) {
+            if (filePath != null) {
+                try {
+                    EmailTemplateController.closeNewEmailTemplateWindow();
+                    FileWriter file = new FileWriter("src/main/resources/local database/" + fileName.getText());
+                    file.write(filePath);
+                    file.close();
+                } catch (IOException e) {
+                    Alert a = new Alert(Alert.AlertType.ERROR, "Please upload an email template.");
+                    a.show();
+                }
+                MainController.replaceEmailTemplates();
+            } else {
                 Alert a = new Alert(Alert.AlertType.ERROR, "Please upload an email template.");
                 a.show();
             }
-            MainController.replaceEmailTemplates();
         }
         else {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Please upload an email template.");
+            Alert a = new Alert(Alert.AlertType.ERROR, "You can only create up to 8 email templates. Please delete one to continue.");
             a.show();
         }
     }

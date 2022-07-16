@@ -1,16 +1,10 @@
 package com.example.batchemailsender;
 
 import com.google.common.io.Files;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -21,7 +15,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
@@ -98,15 +91,21 @@ public class EmailListSelectorController extends MainController {
     }
 
     public void duplicate() throws IOException {
-        try {
-            String contents = Files.asCharSource(new File("src/main/resources/local database/" + name.getText() + ".json"), StandardCharsets.UTF_8).read();
-            FileWriter newFile = new FileWriter("src/main/resources/local database/" + name.getText() + " copy.json");
-            newFile.write(contents);
-            newFile.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (EmailListSelectorController.allEmailListSelectors.size() < 8) {
+            try {
+                String contents = Files.asCharSource(new File("src/main/resources/local database/" + name.getText() + ".json"), StandardCharsets.UTF_8).read();
+                FileWriter newFile = new FileWriter("src/main/resources/local database/" + name.getText() + " copy.json");
+                newFile.write(contents);
+                newFile.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            MainController.replaceEmailLists();
         }
-        MainController.replaceEmailLists();
+        else {
+            Alert a = new Alert(Alert.AlertType.ERROR, "You can only have 8 email lists. Please delete one to continue.");
+            a.show();
+        }
     }
 
     public void edit() throws IOException {
