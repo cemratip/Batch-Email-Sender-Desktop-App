@@ -22,9 +22,8 @@ public class EmailListController {
         EmailListSelectorController.allEmailListSelectors.clear();
         BorderPane emailList = FXMLLoader.load(Objects.requireNonNull(EmailListController.class.getResource("EmailLists.fxml")));
         VBox list = (VBox) emailList.getChildren().get(1);
-
         emailListFiles.clear();
-        File[] files = new File("src/main/resources/local database").listFiles();
+        File[] files = new File(MainController.databasePath).listFiles();
         for (File file : Objects.requireNonNull(files)) {
             if (file.isFile()) {
                 String name = file.getName();

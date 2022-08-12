@@ -31,7 +31,7 @@ public class CreateNewEmailAccountWindow {
             fileName += ".txt";
             boolean exists = false;
 
-            File[] files = new File("src/main/resources/local database").listFiles();
+            File[] files = new File(MainController.databasePath).listFiles();
             for (File file : Objects.requireNonNull(files)) {
                 if (file.isFile()) {
                     String name = file.getName();
@@ -87,7 +87,7 @@ public class CreateNewEmailAccountWindow {
                         // if it does exist, store username and hashed password in a .txt file with the password on a new line
                         try {
                             EmailAccountController.closeNewEmailAccountWindow();
-                            FileWriter file = new FileWriter("src/main/resources/local database/" + fileName);
+                            FileWriter file = new FileWriter(MainController.databasePath + fileName);
                             StringBuilder sb = new StringBuilder(password);
                             file.write(email + "\n" + sb.reverse());
                             file.close();

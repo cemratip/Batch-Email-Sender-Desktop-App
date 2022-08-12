@@ -24,7 +24,7 @@ public class CreateNewEmailListWindow {
 
     public void create() throws IOException {
         if (EmailListSelectorController.allEmailListSelectors.size() < 8) {
-            if (!EmailListController.emailListFiles.contains(nameInput.getText())) {
+            if (!MainController.databasePath.contains(nameInput.getText())) {
                 if (!emails.getText().equals("")) {
                     String emailListName = nameInput.getText();
                     String allEmails = emails.getText();
@@ -47,7 +47,7 @@ public class CreateNewEmailListWindow {
                     jsonObject.put("emails", emailsArrayList);
 
                     try {
-                        FileWriter file = new FileWriter("src/main/resources/local database/" + emailListName + ".json");
+                        FileWriter file = new FileWriter(MainController.databasePath + emailListName + ".json");
                         file.write(jsonObject.toJSONString());
                         file.close();
                     } catch (IOException e) {

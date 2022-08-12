@@ -22,7 +22,7 @@ public class EmailAccountController {
         VBox list = (VBox) emailAccountList.getChildren().get(1);
 
         ArrayList<String> emailAccounts = new ArrayList<>();
-        File[] files = new File("src/main/resources/local database").listFiles();
+        File[] files = new File(MainController.databasePath).listFiles();
         for (File file : Objects.requireNonNull(files)) {
             if (file.isFile()) {
                 String name = file.getName();

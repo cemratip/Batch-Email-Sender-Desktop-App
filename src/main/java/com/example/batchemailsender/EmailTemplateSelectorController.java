@@ -37,7 +37,7 @@ public class EmailTemplateSelectorController extends MainController {
             }
             try {
                 String fileName = name.getText()+".html";
-                Path filePath = Path.of("src/main/resources/local database/"+fileName);
+                Path filePath = Path.of(MainController.databasePath+fileName);
                 selectedEmailTemplatePath = Files.readString(filePath);
             } catch (IOException e) {
                 Alert a = new Alert(Alert.AlertType.ERROR, "File not found.");
@@ -70,7 +70,7 @@ public class EmailTemplateSelectorController extends MainController {
         root.getChildren().clear();
         selectedEmailTemplatePath = "";
         String fileName = name.getText()+".html";
-        Path filePath = Path.of("src/main/resources/local database/"+fileName);
+        Path filePath = Path.of(MainController.databasePath+fileName);
         File f = new File(String.valueOf(filePath));
         f.delete();
         allEmailTemplateSelectors.remove(root);

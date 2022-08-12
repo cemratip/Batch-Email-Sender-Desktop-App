@@ -14,18 +14,23 @@ import javax.mail.internet.MimeMessage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.Properties;
 import com.google.common.io.Files;
 
 public class MainController extends Application {
     private static Pane root;
-
     @FXML
     private TextField subject;
 
+    public static String databasePath;
+
     @Override
     public void start(Stage stage) throws Exception {
+        Path currentRelativePath = Paths.get("");
+        databasePath = currentRelativePath.toAbsolutePath().toString() + "/local database/";
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Main.fxml")));
         Scene scene = new Scene(root, 900, 500);
         stage.setTitle("Batch Email Sender");
@@ -147,5 +152,9 @@ public class MainController extends Application {
         }
         Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Email batch sent.");
         a.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }

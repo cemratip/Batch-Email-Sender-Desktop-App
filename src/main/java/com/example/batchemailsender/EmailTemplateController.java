@@ -18,13 +18,15 @@ import java.util.Scanner;
 public class EmailTemplateController {
     private static Stage createNewEmailTemplateStage;
 
+    public static final String emailListPath = "/Users/Cem/IdeaProjects/batchemailsender/out/artifacts/BatchEmailSender_jar/local database/";
+
     public static BorderPane display() throws IOException {
         EmailTemplateSelectorController.allEmailTemplateSelectors.clear();
         BorderPane emailTemplateList = FXMLLoader.load(Objects.requireNonNull(EmailTemplateController.class.getResource("EmailTemplates.fxml")));
         VBox list = (VBox) emailTemplateList.getChildren().get(1);
 
         ArrayList<String> emailTemplateFiles = new ArrayList<>();
-        File[] files = new File("src/main/resources/local database").listFiles();
+        File[] files = new File(MainController.databasePath).listFiles();
         for (File file : Objects.requireNonNull(files)) {
             if (file.isFile()) {
                 String name = file.getName();
@@ -36,7 +38,7 @@ public class EmailTemplateController {
 
         for (String emailTemplateFile : emailTemplateFiles) {
             try {
-                File myObj = new File("src/main/resources/local database/"+emailTemplateFile+".html");
+                File myObj = new File(MainController.databasePath+emailTemplateFile+".html");
                 Scanner myReader = new Scanner(myObj);
                 while (myReader.hasNextLine()) {
                     String data = myReader.nextLine();

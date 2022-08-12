@@ -68,7 +68,7 @@ public class EmailListSelectorController extends MainController {
             hbox.setId("selected");
             JSONParser jsonParser = new JSONParser();
             String fileName = name.getText() + ".json";
-            Path filePath = Path.of("src/main/resources/local database/" + fileName);
+            Path filePath = Path.of(MainController.databasePath + fileName);
             try (FileReader reader = new FileReader(String.valueOf(filePath))) {
                 Object obj = jsonParser.parse(reader);
                 JSONObject emails = (JSONObject) obj;
@@ -93,8 +93,8 @@ public class EmailListSelectorController extends MainController {
     public void duplicate() throws IOException {
         if (EmailListSelectorController.allEmailListSelectors.size() < 8) {
             try {
-                String contents = Files.asCharSource(new File("src/main/resources/local database/" + name.getText() + ".json"), StandardCharsets.UTF_8).read();
-                FileWriter newFile = new FileWriter("src/main/resources/local database/" + name.getText() + " copy.json");
+                String contents = Files.asCharSource(new File(MainController.databasePath + name.getText() + ".json"), StandardCharsets.UTF_8).read();
+                FileWriter newFile = new FileWriter(MainController.databasePath + name.getText() + " copy.json");
                 newFile.write(contents);
                 newFile.close();
             } catch (IOException e) {
@@ -128,7 +128,7 @@ public class EmailListSelectorController extends MainController {
         nameTextField.setText(name.getText());
 
         TextArea emailTextArea = (TextArea) fieldContainer.getChildren().get(2);
-        String contents = Files.asCharSource(new File("src/main/resources/local database/" + name.getText() + ".json"), StandardCharsets.UTF_8).read();
+        String contents = Files.asCharSource(new File(MainController.databasePath + name.getText() + ".json"), StandardCharsets.UTF_8).read();
 
         HBox buttonContainer = (HBox) stageRoot.getChildren().get(2);
         Button saveButton = (Button) buttonContainer.getChildren().get(0);
@@ -151,7 +151,7 @@ public class EmailListSelectorController extends MainController {
         }
         EmailListController.emailListFiles.remove(name.getText());
         String fileName = name.getText() + ".json";
-        Path filePath = Path.of("src/main/resources/local database/"+fileName);
+        Path filePath = Path.of(MainController.databasePath + fileName);
         File f = new File(String.valueOf(filePath));
         f.delete();
         allEmailListSelectors.remove(root);

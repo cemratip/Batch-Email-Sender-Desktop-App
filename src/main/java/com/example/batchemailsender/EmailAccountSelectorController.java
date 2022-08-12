@@ -40,7 +40,7 @@ public class EmailAccountSelectorController extends MainController {
             String fileName = name.getText();
             fileName = fileName.replace("@gmail.com", "");
             try {
-                File myObj = new File("src/main/resources/local database/"+fileName+".txt");
+                File myObj = new File(MainController.databasePath+fileName+".txt");
                 Scanner myReader = new Scanner(myObj);
                 while (myReader.hasNextLine()) {
                     String data = myReader.nextLine();
@@ -70,7 +70,7 @@ public class EmailAccountSelectorController extends MainController {
         selectedEmailAccountDetails.clear();
         String fileName = name.getText();
         fileName = fileName.replace("@gmail.com", "");
-        File file = new File("src/main/resources/local database/" + fileName + ".txt");
+        File file = new File(MainController.databasePath + fileName + ".txt");
         file.delete();
         allEmailAccountSelectors.remove(root);
     }

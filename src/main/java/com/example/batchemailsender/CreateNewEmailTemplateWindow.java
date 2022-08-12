@@ -15,8 +15,6 @@ public class CreateNewEmailTemplateWindow {
 
     @FXML
     private Label fileName;
-    @FXML
-    private WebView displayer;
 
     private String filePath;
 
@@ -25,7 +23,7 @@ public class CreateNewEmailTemplateWindow {
             if (filePath != null) {
                 try {
                     EmailTemplateController.closeNewEmailTemplateWindow();
-                    FileWriter file = new FileWriter("src/main/resources/local database/" + fileName.getText());
+                    FileWriter file = new FileWriter(MainController.databasePath + fileName.getText());
                     file.write(filePath);
                     file.close();
                 } catch (IOException e) {
@@ -52,9 +50,5 @@ public class CreateNewEmailTemplateWindow {
         File selectedFile = fileChooser.showOpenDialog(fileOpenStage);
         fileName.setText(selectedFile.getName());
         filePath = selectedFile.getPath();
-        WebEngine webEngine = displayer.getEngine();
-        displayer.setVisible(true);
-        displayer.setZoom(0.5);
-        webEngine.load("file://"+filePath);
     }
 }
