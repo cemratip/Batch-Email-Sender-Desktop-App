@@ -18,6 +18,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.Properties;
+
 import com.google.common.io.Files;
 
 public class MainController extends Application {
@@ -26,7 +27,6 @@ public class MainController extends Application {
     private TextField subject;
 
     public static String databasePath;
-
     @Override
     public void start(Stage stage) throws Exception {
         Path currentRelativePath = Paths.get("");

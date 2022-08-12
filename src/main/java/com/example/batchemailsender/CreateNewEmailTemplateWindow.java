@@ -3,13 +3,11 @@ package com.example.batchemailsender;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.web.WebEngine;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import javafx.scene.web.WebView;
 
 public class CreateNewEmailTemplateWindow {
 
